@@ -10,8 +10,8 @@ public class SmsControllerTests
 
     [Fact]
     public void Test_PerNumberLimit_NotExceeded()
-    {// Arrange
-           // Arrange
+    {
+        // Arrange
     var perNumberLimits = new ConcurrentDictionary<string, SlidingWindow>();
     var accountLimit = new SlidingWindow(10);
     var controller = new SmsController(perNumberLimits, accountLimit);

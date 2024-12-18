@@ -21,22 +21,22 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
   // Add CORS services to the container
-        builder.Services.AddCors(options =>
-        {
-            options.AddPolicy("AllowFrontend", policy =>
+builder.Services.AddCors(options =>
+    {
+        options.AddPolicy("AllowFrontend", policy =>
             {
                 policy.WithOrigins("http://localhost:4200") // Your frontend URL
                       .AllowAnyHeader()
                       .AllowAnyMethod();
             });
-        });
+    });
 
 var app = builder.Build();
 
  // Enable CORS
-        app.UseCors("AllowFrontend");
+app.UseCors("AllowFrontend");
 
-        app.MapGet("/monitor/account", () => Results.Json(new { message = "Account data" }));
+app.MapGet("/monitor/account", () => Results.Json(new { message = "Account data" }));
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
